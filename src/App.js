@@ -15,10 +15,10 @@ function App() {
   ])
 
   useEffect(() => {
-    let data = localStorage.getItem('tasks')
-    if(data != null) {
-      setTaskItems(JSON.parse(data))
-    } else {
+    let data = localStorage.getItem('tasks')//Get data of localstore
+    if(data != null) {//If there is data
+      setTaskItems(JSON.parse(data))//They send them to UseState
+    } else {//If there is no data, create example tasks
       setUserName('Blue')
       setTaskItems([
         { name: 'TaskOne Example', done: false },
@@ -29,7 +29,7 @@ function App() {
     }
   }, [])
 
-  useEffect(() => {
+  useEffect(() => {//He sends the data to localStore
     localStorage.setItem('tasks', JSON.stringify(taskItems))
   }, [taskItems])
 
@@ -73,11 +73,12 @@ function App() {
         <VisibilityControl
           description="Completed Task"
           isChecked={showCompleted}//Always true
-          callback={checked => setShowCompleted(checked)}
+          callback={checked => setShowCompleted(checked)}//Change the state in true or false
         />
       </div>
 
       {
+        //If it's active and if there are completed tasks this is shown
         showCompleted && (
           <table className="table table-striped table-bordered">
             <thead>

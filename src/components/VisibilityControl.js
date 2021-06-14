@@ -6,8 +6,8 @@ export const VisibilityControl = (props) => {
             <input 
             type="checkbox" 
             className="form-check-input"
-            checked={props.isChecked}
-            onChange={e => props.callback(e.target.checked)}
+            checked={props.isChecked}//Always true
+            onChange={e => props.callback(e.target.checked)}//Pass the event to the function
             />
             <label htmlFor="form-check-label">
                 Show {props.description}
